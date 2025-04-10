@@ -30,7 +30,10 @@ email_textbox.send_keys("shaikh.shahazad@bridgelabz.com")
 # email_textbox.submit()
 driver.find_element(By.XPATH, '//span[text()="Next"]').click()
 sleep(2)
-driver.find_element(By.XPATH, '//input[@type="password"]').send_keys("bRidgelabz@123")
+# driver.find_element(By.XPATH, '//input[@type="password"]').send_keys("bRidgelabz@123")
+password_input = driver.find_element(By.XPATH, '//input[@type="password"]')
+password_input.click()
+password_input.send_keys("bRidgelabz@123" + Keys.TAB)
 sleep(2)
 driver.find_element(By.XPATH, '//span[text()="Next"]').click()
 sleep(2)
@@ -93,4 +96,54 @@ type_dropdown.click()
 
 type_option = wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'Practice')]")))
 type_option.click()
+sleep(1)
+
+type_makerplan=wait.until(EC.element_to_be_clickable((By.XPATH, "//label[text()='Maker Plan *']/following::div[@role='combobox'][1]")))
+type_makerplan.click()
+
+type_makerplan_option = wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'angular')]")))
+type_makerplan_option.click()
+sleep(1)
+
+type_module=wait.until(EC.element_to_be_clickable((By.XPATH, "//label[text()='Module *']/following::div[@role='combobox'][1]")))
+type_module.click()
+
+type_module_option=wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'IO Stream')]")))
+type_module_option.click()
+sleep(1)
+
+topic_name=wait.until(EC.element_to_be_clickable((By.XPATH, "//label[text()='Topic Name *']/following::div[@role='combobox'][1]")))
+topic_name.click()
+
+topic_name_option=wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'File IO')]")))
+topic_name_option.click()
+sleep(1)
+
+coding_speed=wait.until(EC.element_to_be_clickable((By.XPATH, "//label[text()='Coding Speed *']/following::div[@role='combobox'][1]")))
+coding_speed.click()
+
+coding_speed_option=wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'Regular')]")))
+coding_speed_option.click()
+sleep(1)
+
+day_input=driver.find_element(By.NAME, "day")
+day_input.send_keys("1")
+
+level1_input=driver.find_element(By.NAME, "level1")
+level1_input.send_keys("1")
+
+level2_input=driver.find_element(By.NAME, "level2")
+level2_input.send_keys("2")
+
+level3_input=driver.find_element(By.NAME, "level3")
+level3_input.send_keys("1")
+
+# Submit Part
+
+wait = WebDriverWait(driver, 20)
+practice_submit = wait.until(EC.element_to_be_clickable(
+    (By.XPATH, "//button[contains(text(),'Submit')]")
+))
+practice_submit.click()
+
 time.sleep(3)
