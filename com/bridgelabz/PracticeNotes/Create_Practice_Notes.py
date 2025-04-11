@@ -61,7 +61,7 @@ wait=WebDriverWait(driver, 10)
 practice_lab_dropdown = wait.until(EC.element_to_be_clickable((By.XPATH, "//label[text()='Lab Name']/following::div[@role='combobox'][1]")))
 practice_lab_dropdown.click()
 
-option_labname = wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'Bombay Lab 1')]")))
+option_labname = wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'Lab Six')]")))
 
 driver.execute_script("arguments[0].click();", option_labname)
 time.sleep(3)
@@ -74,3 +74,49 @@ view_lab = wait.until(EC.element_to_be_clickable(
 view_lab.click()
 driver.execute_script("arguments[0].click();", view_lab)
 time.sleep(3)
+
+wait = WebDriverWait(driver, 20)
+create_daily_practice = wait.until(EC.element_to_be_clickable(
+    (By.XPATH, "//button[contains(text(),'CREATE PRACTICE NOTES')]")
+))
+time.sleep(3)
+create_daily_practice.click()
+time.sleep(3)
+
+practice_type_makerplan=wait.until(EC.element_to_be_clickable((By.XPATH, "//label[text()='Maker Plan *']/following::div[@role='combobox'][1]")))
+practice_type_makerplan.click()
+
+practice_type_makerplan_option = wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'DBMS')]")))
+practice_type_makerplan_option.click()
+sleep(1)
+
+practice_type_module=wait.until(EC.element_to_be_clickable((By.XPATH, "//label[text()='Module *']/following::div[@role='combobox'][1]")))
+practice_type_module.click()
+
+practice_type_module_option=wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'DBMS')]")))
+practice_type_module_option.click()
+sleep(1)
+
+practice_topic_name=wait.until(EC.element_to_be_clickable((By.XPATH, "//label[text()='Topic Name *']/following::div[@role='combobox'][1]")))
+practice_topic_name.click()
+sleep(1)
+
+practice_topic_name_option=wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'DDL')]")))
+practice_topic_name_option.click()
+sleep(1)
+
+practice_day_input=driver.find_element(By.NAME, "day")
+practice_day_input.send_keys("1")
+sleep(1)
+
+wait = WebDriverWait(driver, 20)
+practice_submit = wait.until(EC.element_to_be_clickable(
+    (By.XPATH, "//button[contains(text(),'Submit')]")
+))
+practice_submit.click()
+
+time.sleep(3)
+
+
+
+
