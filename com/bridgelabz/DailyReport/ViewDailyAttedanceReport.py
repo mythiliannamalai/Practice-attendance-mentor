@@ -10,7 +10,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 
-
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.get("https://bl-practice-attendance-app-stg-187791816934.asia-south1.run.app/")
 
@@ -80,15 +79,26 @@ session_time_dropdown = wait.until(EC.element_to_be_clickable((By.XPATH, "//labe
 session_time_dropdown.click()
 time.sleep(2)
 
-session_time_option = wait.until(EC.element_to_be_clickable((By.XPATH, "//label[text()='10:00 AM - 04:00 PM']/following::div[@role='combobox'][1]")))
-# session_time_option.click()
-driver.execute_script("arguments[0].click();", session_time_option)
+session_option_labname = wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'10:00 AM - 04:00 PM')]")))
+driver.execute_script("arguments[0].click();", session_option_labname)
+
 time.sleep(2)
 
+wait=WebDriverWait(driver, 10)
+attendancelab_dropdown = wait.until(EC.element_to_be_clickable((By.XPATH, "//label[text()='Attendance Name']/following::div[@role='combobox'][1]")))
+attendancelab_dropdown.click()
+time.sleep(2)
+
+attendance_option_labname = wait.until(EC.element_to_be_clickable((By.XPATH, "//ul//li[contains(text(),'Left Lab')]")))
+driver.execute_script("arguments[0].click();", attendance_option_labname)
+
+wait = WebDriverWait(driver, 30)
+view_btn_xpath = "//button[normalize-space()='VIEW']"
+viewattendance_lab = wait.until(EC.visibility_of_element_located((By.XPATH, view_btn_xpath)))
+driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", viewattendance_lab)
+driver.execute_script("arguments[0].click();", viewattendance_lab)
+time.sleep(3)
 
 
 
-
-
-# driver.execute_script("arguments[0].click();", view_lab)
 # time.sleep(3)
