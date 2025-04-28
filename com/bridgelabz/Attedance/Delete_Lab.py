@@ -44,12 +44,10 @@ delete_button.click()
 
 wait = WebDriverWait(driver, 200)
 time.sleep(3)
-
 # Wait for the button with visible text 'Yes, Disable'
 yes_button = wait.until(EC.element_to_be_clickable(
     (By.XPATH, "//button[normalize-space()='Yes, Disable']")
 ))
-
 time.sleep(1)
 # Use JavaScript click to avoid overlay/interception
 driver.execute_script("arguments[0].click();", yes_button)

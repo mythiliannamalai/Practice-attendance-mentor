@@ -90,9 +90,7 @@ actions = ActionChains(driver)
 actions.move_to_element(fellowship_radio_label).click().perform()
 
 print("✅ Fellowship radio selected.")
-
 wait = WebDriverWait(driver, 30)
 updated_lab =  wait.until(EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Update']")))
 updated_lab.click()
-
 time.sleep(2)
