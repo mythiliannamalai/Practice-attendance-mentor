@@ -1,4 +1,4 @@
-
+import os
 from time import sleep
 
 import pytest
@@ -31,8 +31,17 @@ class TestSignIn:
         sleep(2)
 
         chrome_browser.switch_to.window(chrome_browser.window_handles[0])
+        act_title=chrome_browser.title
+        if act_title == "BL Practice App123":
+            assert True
+        else:
+            # time.sleep(2)
+            if not os.path.exists("C:\\Users\\Admin\\PycharmProjects\\BridgelabzAttedanceSystem\\com\\bridgelabz\\ScreenShots"):
+                os.makedirs("./ScreenShots")
 
-        assert "BL Practice App" in chrome_browser.title
+            chrome_browser.save_screenshot(
+                "C:\\Users\\Admin\\PycharmProjects\\BridgelabzAttedanceSystem\\com\\bridgelabz\\ScreenShots\\test_signin.png")
+            assert False, f"Title mismatch: Expected 'BL Practice App', got '{act_title}'"
         print("Title is",chrome_browser.title)
         sleep(10)
 
